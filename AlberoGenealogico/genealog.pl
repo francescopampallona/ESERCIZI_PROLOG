@@ -11,11 +11,17 @@ madre(lisa, sofia).
 madre(sofia, giulia).
 
 % Trova i nonni paterni
-nonno(Nonno, Nipote) :-
-    padre(Nonno, Genitore),
-    (padre(Genitore, Nipote) ; madre(Genitore, Nipote)).
+nonnoPaterno(Nonno, Nipote) :-
+    padre(Nonno, Genitore),padre(Genitore, Nipote).
 
-% Trova le nonne materne
-nonna(Nonna, Nipote) :-
-    madre(Nonna, Genitore),
-    (madre(Genitore, Nipote) ; padre(Genitore, Nipote)).
+%Trova le nonne paterne
+nonnaPaterna(Nonna, Nipote) :-
+    madre(Nonna, Genitore),padre(Genitore, Nipote).
+
+%Trova i nonni materni
+nonnoMaterno(Nonno, Nipote) :-
+    padre(Nonno, Genitore),madre(Genitore, Nipote).
+
+%Trova le nonne materne
+nonnaMaterna(Nonna, Nipote) :- 
+    madre(Nonna, Genitore), padre(Genitore, Nipote).
